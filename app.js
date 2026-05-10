@@ -18,15 +18,10 @@ if (app.get("env") == "develoment") {
   app.use(morgan("tiny"));
 }
 
-app.get('/api/userd' ,async(req,res) =>{
-  const q='SELECT * FROM user';
-  const rows=await db.query('SELECT * FROM user')
 
-console.log(rows);
-
-})
 //  import the routes
 const userRoutes = require("./modules/users/user");
+const userdRoutes = require("./modules/usersd/usersd");
 const homeRoutes = require('./modules/home/home')
 
 
@@ -34,6 +29,7 @@ const homeRoutes = require('./modules/home/home')
 //  user the routes
 app.use('/', homeRoutes)
 app.use("/api/user", userRoutes);
+app.use("/api/userd", userdRoutes);
 
 
 
